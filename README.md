@@ -1,96 +1,89 @@
 # ✈️ VoeBem Analytics — Pipeline de Dados & IA (Imersão Alura)
 
-[![Databricks](https://img.shields.io/badge/Databricks-FF3621?style=for-the-badge&logo=Databricks&logoColor=white)](https://databricks.com/)
-[![Apache Spark](https://img.shields.io/badge/Apache_Spark-E25A1C?style=for-the-badge&logo=apachespark&logoColor=white)](https://spark.apache.org/)
-[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
-[![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
-[![Delta Lake](https://img.shields.io/badge/Delta_Lake-000000?style=for-the-badge&logo=delta-lake&logoColor=white)](https://delta.io/)
-
-> 🚨 **Status do Projeto:** 🏗️ *Em Construção / Processo de Ingestão na Camada Bronze*
+![Status](https://img.shields.io/badge/Status-Concluído%20%E2%9C%85-brightgreen)
+![Databricks](https://img.shields.io/badge/Databricks-FF3621?style=flat&logo=Databricks&logoColor=white)
+![Apache Spark](https://img.shields.io/badge/Apache%20Spark-E25A1C?style=flat&logo=apachespark&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-025E8D?style=flat&logo=sqlite&logoColor=white)
 
 ---
 
 ## 📌 Visão Geral do Projeto
 
-O **VoeBem Analytics** é uma solução de Engenharia e Inteligência de Dados desenvolvida durante a **Imersão de Engenharia de Dados da Alura**. 
+O **VoeBem Analytics** é uma solução completa de **Engenharia de Dados e Inteligência Artificial** desenvolvida durante a *Imersão de Engenharia de Dados da Alura*. 
 
-O objetivo do projeto é processar, estruturar e analisar volumes massivos de dados históricos de voos (atrasos, cancelamentos, horários, companhias aéreas e aeroportos) para responder a perguntas estratégicas de negócio e apoiar a tomada de decisão sobre a saúde operacional da companhia aérea **VoeBem**.
+O objetivo do projeto é processar, estruturar e analisar volumes massivos de dados históricos de voos (atrasos, cancelamentos, horários, companhias aéreas e aeroportos) sob a arquitetura **Medallion (Bronze, Silver e Gold)**, respondendo a perguntas estratégicas de negócio e apoiando a tomada de decisão sobre a saúde operacional da companhia aérea VoeBem.
 
 ---
 
-## ❓ Perguntas de Negócio a Serem Respondidas
+## 💡 Valor Agregado ao Negócio
 
-A arquitetura e os agentes de IA do projeto foram desenhados para responder às seguintes questões:
+O **VoeBem Analytics** transforma dados operacionais brutos em inteligência acionável, entregando valor direto nas seguintes frentes:
 
-* **Quais voos mais atrasam?**
-* **Início de ano apresenta maior volume de voos atrasados?**
-* **Quais são os dias, horários e rotas de maior incidência de atraso?**
-* **Quais companhias aéreas e aeroportos concentram os maiores índices de indisponibilidade?**
+* 💰 **Redução de Impacto Financeiro:** Identificação precisa dos gargalos de atraso e indisponibilidade, permitindo renegociação de *slots* e mitigação de multas por descumprimento de horários.
+* ⚙️ **Otimização Operacional baseada em Dados:** Mapeamento de rotas e períodos sazonais com maior incidência de cancelamentos, possibilitando dimensionamento preventivo de tripulação e manutenção de aeronaves.
+* 🤖 **Democratização do Acesso à Informação:** Com a integração de **Agentes de IA**, gestores e diretores podem realizar consultas complexas em linguagem natural sem a necessidade de escrever SQL ou código Spark.
+* 🔒 **Governança e Confiabilidade:** Garantia de integridade e rastreabilidade dos dados (*Lineage*) com o Unity Catalog e o uso de tabelas **Delta Lake (ACID)**.
+
+---
+
+## 🛠️ Tech Stack & Ferramentas
+
+| Categoria | Tecnologia / Ferramentas |
+| :--- | :--- |
+| **Plataforma de Dados** | ![Databricks](https://img.shields.io/badge/Databricks-FF3621?style=for-the-badge&logo=Databricks&logoColor=white) |
+| **Engine de Processamento** | ![Apache Spark](https://img.shields.io/badge/Apache_Spark-E25A1C?style=for-the-badge&logo=apachespark&logoColor=white) ![PySpark](https://img.shields.io/badge/PySpark-E25A1C?style=for-the-badge&logo=apachespark&logoColor=white) |
+| **Linguagens de Programação** | ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white) |
+| **Arquitetura & Armazenamento** | ![Delta Lake](https://img.shields.io/badge/Delta_Lake-000000?style=for-the-badge&logo=delta&logoColor=white) ![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white) ![Azure](https://img.shields.io/badge/Azure-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white) |
+| **Governança & Metadados** | ![Unity Catalog](https://img.shields.io/badge/Unity_Catalog-000000?style=for-the-badge&logo=databricks&logoColor=white) |
+| **Inteligência Artificial** | ![Databricks AI](https://img.shields.io/badge/AI_Agents-FF3621?style=for-the-badge&logo=openai&logoColor=white) |
+
+---
+
+## ❓ Perguntas de Negócio Respondidas
+
+A arquitetura e os agentes de IA do projeto foram desenhados e otimizados para responder a questões estratégicas:
+
+1. **Gargalos Operacionais:** Quais voos e rotas apresentam o maior índice e tempo médio de atraso?
+2. **Análise Sazonal:** O início do ano (alta temporada) apresenta maior volume proporcional de voos atrasados em comparação com outros trimestres?
+3. **Padrões Temporais:** Quais são os dias da semana e faixas horárias com maior incidência de imprevistos?
+4. **Desempenho de Parceiros:** Quais companhias aéreas parceiras e aeroportos concentram os maiores índices de indisponibilidade e cancelamento?
 
 ---
 
 ## 🏗️ Arquitetura & Conceitos de Engenharia de Dados
 
 ### 1. ⚡ Computação Distribuída & Apache Spark
-* **Engine de Processamento:** Uso do **Apache Spark** dentro do **Databricks** para gestão eficiente de recursos, memória e processamento paralelo em larga escala.
-* **Consumo & Consultas:** Expressão de transformações e consultas via **PySpark** e **SQL** para otimização de *throughput*.
+* **Engine de Processamento:** Utilização do **Apache Spark** no ambiente **Databricks** para gestão eficiente de memória, otimização de consultas e processamento paralelo de grandes volumes de dados.
+* **Otimização:** Expressão de transformações rigorosas via **PySpark** e **Spark SQL** garantindo alta performance no consumo de CPU/Memória.
 
-### 2. 🗄️ Nuvem, Data Lake & Lakehouse
-* **Storage de Alta Performance:** Infraestrutura em nuvem (**AWS / Azure**) garantindo alta velocidade de leitura e escrita.
-* **Data Lake & Volumes:** Armazenamento de dados brutos com camada de abstração para gerenciamento de arquivos.
-* **Arquitetura LakeHouse:** Suporte a **ACID Transactions** e **Versionamento de Dados (Time Travel)**, permitindo updates, rools e modificações pontuais sem necessidade de reprocessar todo o dataset.
+### 2. 🗄️ Arquitetura Lakehouse Medallion (Delta Lake)
+Suporte total a transações ACID, versionamento de dados (*Time Travel*) e garantia de consistência entre camadas:
 
----
+* 🥉 **Camada Bronze (Raw Data):** Ingestão dos dados brutos com aplicação dos princípios de **Idempotência** e **Ingestão Full (`.mode("overwrite")`)**, assegurando que releituras de arquivos históricos não causem duplicidade.
+* 🥈 **Camada Silver (Clean & Standardized):** Limpeza, desduplicação, tratamento de valores nulos, tipagem estrita de schema e padronização de formatos de data/hora.
+* 🥇 **Camada Gold (Business Metrics):** Tabelas agregadas, modelagem dimensional e visões analíticas prontas para consumo por dashboards de BI e modelos de IA.
 
-## 🔄 Status do Pipeline & Camada Bronze
-
-Atualmente, o projeto está na etapa de estruturação da **Camada Bronze (Raw Data/Ingestão)** dentro do banco de dados `voe_bem`.
-
-### ⚙️ Princípios Aplicados na Ingestão:
-
-* **Ingestão Full com Overwrite (`.mode("overwrite")`):** Reescreve os dados brutos da camada Bronze para garantir integridade diante de atualizações de arquivos históricos.
-* **Idempotência:** Validação e garantia de que execuções repetidas do pipeline não gerem duplicidade de registros através de filtragens e consistência de ingestão.
+### 3. 📊 Governança de Dados & Metadados
+* **Unity Catalog:** Mapeamento completo do catálogo e esquemas do banco `voe_bem`.
+* **Dicionário de Dados:** Documentação contextualizada de colunas, tipos de dados e regras de negócio para permitir autonomia às equipes analíticas.
 
 ---
 
-## 📊 Governança de Dados & Gestão de Metadados
+## 🤖 Consumo Inteligente via Agentes de IA
 
-A governança do projeto foi estruturada utilizando o catálogo do **Databricks Unity Catalog**:
+Integração de **Agentes de IA** no ambiente Databricks para apoio à tomada de decisão:
 
-* **Catálogo e Esquema:** Documentação ativa das tabelas do banco de dados `voe_bem`.
-* **Metadados Contextualizados:** Mapeamento do dicionário de dados (descrição de colunas, comportamento dos tipos de dados e finalidade) para leitura e entendimento autônomo.
-
----
-
-## 🤖 Consumo via Agentes de IA
-
-Integração de **Agentes de IA** no ambiente do Databricks para consulta inteligente de dados:
-
-* **Validação de Contexto:** Agentes configurados com o contexto organizacional da **VoeBem Analytics**.
-* **Consultas em Linguagem Natural:** Capacidade do agente de traduzir perguntas de negócios (ex: *"Quais aeroportos tiveram mais atrasos no 1º trimestre?"*) em consultas otimizadas sobre o pipeline.
+* **Tradução NL2SQL (Natural Language to SQL):** Capacidade do agente de converter perguntas do usuário (ex.: *"Quais foram os 5 aeroportos com mais atrasos em voos no 1º trimestre?"*) em queries SQL otimizadas diretamente na camada **Gold**.
+* **Validação de Contexto:** Agentes configurados com o contexto do negócio de aviação civil para responder com métricas de precisão.
 
 ---
 
-## 🛠️ Tech Stack & Ferramentas
+## 🚀 Status das Etapas do Projeto
 
-| Categoria | Tecnologia |
-| :--- | :--- |
-| **Plataforma de Dados** | Databricks |
-| **Processamento Massivo** | Apache Spark (PySpark) |
-| **Linguagens** | Python, SQL |
-| **Arquitetura de Dados** | Lakehouse / Delta Lake |
-| **Cloud Provider** | AWS / Azure |
-| **Inteligência Artificial** | Databricks AI Agents |
-| **Governança** | Unity Catalog / Metadata Management |
-
----
-
-## 🚀 Próximos Passos
 - [x] Criação do Banco de Dados `voe_bem`
-- [x] Carga da Camada **Bronze** com Ingestão Full (Overwrite)
-- [ ] Construção da Camada **Silver** (Limpeza, Deduplicação e Padronização)
-- [ ] Construção da Camada **Gold** (Agregações e Modelagem Dimensional para BI)
-- [ ] Implantação Final do Agente de IA para Relatórios de Saúde Operacional
-
----
+- [x] Ingestão e Carga da **Camada Bronze** (Raw Data com garantia de Idempotência)
+- [x] Construção da **Camada Silver** (Limpeza, Deduplicação e Padronização de Schemas)
+- [x] Construção da **Camada Gold** (Agregações Estratégicas e Modelagem Dimensional)
+- [x] Documentação e Governança no **Unity Catalog**
+- [x] Implantação e Validação do **Agente de IA** para Relatórios de Saúde Operacional
